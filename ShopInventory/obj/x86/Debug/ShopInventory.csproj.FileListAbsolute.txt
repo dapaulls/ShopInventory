@@ -1,0 +1,5 @@
+C:\Users\David\Documents\Visual Studio 2010\Projects\ShopInventory\ShopInventory\bin\Debug\ShopInventory.exe
+C:\Users\David\Documents\Visual Studio 2010\Projects\ShopInventory\ShopInventory\bin\Debug\ShopInventory.pdb
+C:\Users\David\Documents\Visual Studio 2010\Projects\ShopInventory\ShopInventory\obj\x86\Debug\ShopInventory.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\Visual Studio 2010\Projects\ShopInventory\ShopInventory\obj\x86\Debug\ShopInventory.exe
+C:\Users\David\Documents\Visual Studio 2010\Projects\ShopInventory\ShopInventory\obj\x86\Debug\ShopInventory.pdb
