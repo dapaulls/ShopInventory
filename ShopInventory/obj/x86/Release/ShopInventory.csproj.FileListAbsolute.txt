@@ -1,0 +1,5 @@
+C:\Users\David\Documents\GitHub\ShopInventory\ShopInventory\bin\Release\ShopInventory.exe
+C:\Users\David\Documents\GitHub\ShopInventory\ShopInventory\bin\Release\ShopInventory.pdb
+C:\Users\David\Documents\GitHub\ShopInventory\ShopInventory\obj\x86\Release\ShopInventory.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\GitHub\ShopInventory\ShopInventory\obj\x86\Release\ShopInventory.exe
+C:\Users\David\Documents\GitHub\ShopInventory\ShopInventory\obj\x86\Release\ShopInventory.pdb
