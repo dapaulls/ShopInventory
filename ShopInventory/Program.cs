@@ -11,10 +11,10 @@ namespace ShopInventory
         static void Main(string[] args)
         {
             // CREATE A NEW PRODUCT LIST
-            List<Product> prodInventory = new List<Product>(); 
+            List<Product> prodInventory = new List<Product>();
             // CREATE A NEW SALES LIST
             List<Sale> salesList = new List<Sale>();
-            
+
             // DISPLAY MAIN MENU
             do
             {
@@ -56,7 +56,7 @@ namespace ShopInventory
                     case "6":
                         displaySalesReport(salesList, 'N', "slow");
                         break;
-                    case"7":
+                    case "7":
                         displaySalesReport(salesList, 'Y', "fast");
                         break;
                     case "8":
@@ -77,7 +77,7 @@ namespace ShopInventory
                 }
                 Console.Write("\nWould you like to perform another action? (Y/N)");
             }
-            while (Console.ReadLine().ToLower() == "y");            
+            while (Console.ReadLine().ToLower() == "y");
         }
 
         private static void displayInventory(List<Product> inventory)
@@ -94,6 +94,9 @@ namespace ShopInventory
 
         private static Product addProduct()
         {
+            decimal correctDecimal;
+            char correctChar;
+            int correctInt;
             Product newProduct = new Product();
             Console.Clear();
             Console.WriteLine("Input a New Product\n");
@@ -103,12 +106,36 @@ namespace ShopInventory
             newProduct.ProductBrand = Console.ReadLine();
             Console.Write("Enter Product Description: ");
             newProduct.ProductDescription = Console.ReadLine();
+        costprice:
             Console.Write("Enter Cost Price: £");
-            newProduct.ProductCostPrice = decimal.Parse(Console.ReadLine());
-            Console.Write("Is the Product fast selling? ");
-            newProduct.ProductFastSelling = char.Parse(Console.ReadLine().ToUpper());
+            bool result = decimal.TryParse(Console.ReadLine(), out correctDecimal);
+            if (result == false)
+            {
+                Console.WriteLine("Please enter a decimal value");
+                goto costprice;
+            }
+            newProduct.ProductCostPrice = correctDecimal;
+        fastselling:
+            Console.Write("Is the Product fast selling (Y/N)? ");
+            string fastSelling = Console.ReadLine().ToUpper();
+            result = char.TryParse(fastSelling, out correctChar);
+            if (result == true && (correctChar.Equals('Y') || correctChar.Equals('N')))
+            { }
+            else
+            {
+                Console.WriteLine("Please enter either 'Y' or 'N'");
+                goto fastselling;
+            }
+            newProduct.ProductFastSelling = correctChar;
+        quantity:
             Console.Write("Enter Quantity: ");
-            newProduct.ProductQuantity = int.Parse(Console.ReadLine());
+            result = Int32.TryParse(Console.ReadLine(), out correctInt);
+            if (result == false)
+            {
+                Console.WriteLine("Please enter a whole number");
+                goto quantity;
+            }
+            newProduct.ProductQuantity = correctInt;
             return newProduct;
         }
 
@@ -149,14 +176,14 @@ namespace ShopInventory
                 Console.WriteLine("\n\tThank you for shopping with us.");
 
                 p.ProductQuantity--;
-                Sale addSale = new Sale() 
-                { 
-                    SaleName = p.ProductName, 
-                    SaleFastSelling = p.ProductFastSelling, 
-                    SaleDate = DateTime.Now 
+                Sale addSale = new Sale()
+                {
+                    SaleName = p.ProductName,
+                    SaleFastSelling = p.ProductFastSelling,
+                    SaleDate = DateTime.Now
                 };
-                salesList.Add(addSale);                
-            }                 
+                salesList.Add(addSale);
+            }
         }
 
         private static void displaySalesReport(List<Sale> salesList)
@@ -179,7 +206,7 @@ namespace ShopInventory
                 Console.WriteLine("Name: {0}\t\t Sold On: {1}", s.SaleName, s.SaleDate);
             }
             Console.WriteLine("\nTotal Number of {0} Selling Products Sold: {1}", option, productSales.Count());
-        }        
+        }
 
         private static void percentageSales(List<Sale> salesList)
         {
@@ -222,13 +249,13 @@ namespace ShopInventory
             }
             var productTotal = productStock.Sum(p => p.ProductQuantity);
             Console.WriteLine("\nTotal Number of {0} Selling Products: {1}", option, productTotal);
-        }        
+        }
 
         private static string inputProductName()
         {
             Console.WriteLine("Enter the product name: ");
             string inputProd = Console.ReadLine();
             return inputProd;
-        }        
+        }
     }
 }
